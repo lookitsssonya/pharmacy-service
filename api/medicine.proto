@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package medicine;
+
+option go_package = "example.com/pharmacy-service/pb;pb";
+
+service MedicineService {
+  rpc Create(CreateRequest) returns (CreateResponse);
+  rpc GetByID(GetByIDRequest) returns (GetByIDResponse);
+  rpc Sell(SellRequest) returns (SellResponse);
+}
+
+message Medicine {
+  string id = 1;
+  string name = 2;
+  string manufacturer = 3;
+  double price = 4;
+  bool prescription = 5;
+  int32 quantity = 6;
+}
+
+message CreateRequest {
+  Medicine medicine = 1;
+}
+
+message CreateResponse {
+  string id = 1;
+  string error = 2;
+}
+
+message GetByIDRequest {
+  string id = 1;
+}
+
+message GetByIDResponse {
+  Medicine medicine = 1;
+  string error = 2;
+}
+
+message SellRequest {
+  string id = 1;
+  int32 count = 2;
+}
+
+message SellResponse {
+  string error = 1;
+}
