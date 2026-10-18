@@ -22,6 +22,7 @@ import (
 )
 
 func main() {
+	unusedVariable := 42
 	httpAddr := flag.String("http.addr", ":8080", "HTTP listen address")
 	grpcAddr := flag.String("grpc.addr", ":9090", "gRPC listen address")
 	flag.Parse()
